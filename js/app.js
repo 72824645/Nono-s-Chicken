@@ -132,7 +132,7 @@ function configurarCheckoutWhatsApp() {
         const total = calcularTotal();
         mensaje += `\n*Total a Pagar: S/ ${total.toFixed(2)}*\n`;
         mensaje += `\n_Método de pago: Yape o Efectivo_`;
-        mensaje += `\n_Dirección / Recojo en local: Benjamin Doig Lossio Mz C Lt 3, Pucusana._`;
+        mensaje += `\n_Dirección / Recojo en local: Manuel Scorza Mz C Lt 3, Pucusana._`;
 
         const telefono = '51993523805'; // Sra. Marita
         const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
