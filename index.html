@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nono's Chicken & Burger | Pucusana</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Librería Vanilla-Tilt para Efecto 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 85" width="150" height="45">
+                        <style>
+                            .b-title { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 38px; fill: #ffffff; }
+                            .b-sub { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 10px; fill: #ffcc00; letter-spacing: 1.5px; text-transform: uppercase; }
+                            .b-line { stroke: #ffffff; stroke-width: 1.5; opacity: 0.7; }
+                        </style>
+                        <text x="5" y="38" class="b-title">Nono's</text>
+                        <line x1="5" y1="56" x2="55" y2="56" class="b-line" />
+                        <text x="63" y="59" class="b-sub">chicken &amp; burger</text>
+                        <line x1="175" y1="56" x2="225" y2="56" class="b-line" />
+                        <g transform="translate(230, 8)">
+                            <path d="M 18 2 Q 30 2 30 18 Q 30 34 18 42 Q 6 34 6 18 Q 6 2 18 2 Z" fill="#e50914" />
+                            <ellipse cx="18" cy="43" rx="4" ry="2" fill="#99060d" />
+                            <path d="M 14 10 L 14 24 M 12 10 L 12 17 M 16 10 L 16 17" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M 22 10 L 22 24" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <nav class="navbar">
+                <a href="#inicio">Inicio</a>
+                <a href="#menu">Menú</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <div class="header-actions">
+                <button id="btn-carrito" class="btn-carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>El Sabor Irresistible de Pucusana</h1>
+            <p>Disfruta de las mejores hamburguesas, pollo broaster crujiente y salchipapas hechas en casa.</p>
+            <a href="#menu" class="btn-principal">Ver Menú</a>
+        </div>
+    </section>
+
+    <!-- Sección de Menú -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="section-title">Nuestro Menú</h2>
+            
+            <!-- Indicador de Abierto / Cerrado -->
+            <div style="text-align: center;">
+                <div id="store-status" class="status-badge">Verificando horario...</div>
+            </div>
+
+            <!-- Buscador en tiempo real -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="🔍 Buscar hamburguesa, broaster, infusión...">
+            </div>
+
+            <!-- Filtros por categoría -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="hamburguesas">Hamburguesas</button>
+                <button class="filter-btn" data-filter="broaster">Pollo Broaster</button>
+                <button class="filter-btn" data-filter="salchipapas">Salchipapas</button>
+                <button class="filter-btn" data-filter="infusiones">Infusiones</button>
+            </div>
+
+            <!-- Grilla de Productos -->
+            <div id="productos-grid" class="productos-grid">
+                <!-- Se cargan dinámicamente desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal del Carrito -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-header">
+            <h3>Tu Carrito de Compras</h3>
+            <button id="close-cart" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <!-- Items del carrito -->
+        </div>
+        <div class="cart-footer">
+            <div class="payment-info" style="margin-bottom: 10px; font-size: 0.9rem; color: #b3b3b3;">
+                <p><i class="fas fa-wallet" style="color: #ffcc00;"></i> <strong>Métodos de pago:</strong> Yape / Efectivo</p>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-amount">S/ 0.00</span>
+            </div>
+            <button id="checkout-whatsapp" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="footer-content">
+            <h3>Nono's Chicken & Burger</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Dirección: Benjamin Doig Lossio Mz C Lt 3 - Pucusana</p>
+            <p><i class="fas fa-clock"></i> Horario de Atención: 8:30 p.m. a 12:30 a.m.</p>
+            <p><i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook: <strong>Nono's</strong></p>
+            <p><i class="fas fa-phone"></i> Pedidos al: +51 993 523 805 (Sra. Marita)</p>
+            <p class="copy">&copy; 2026 Nono's. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/51993523805?text=Hola%20Nono's,%20deseo%20hacer%20una%20consulta" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/productos.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
